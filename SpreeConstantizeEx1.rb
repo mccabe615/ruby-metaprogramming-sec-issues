@@ -1,3 +1,5 @@
+## FROM https://github.com/spree/spree/blob/90daf36f622be6f90725ebbe30a46957b14a29c5/backend/app/controllers/spree/admin/payment_methods_controller.rb#L11
+
 module Spree
   module Admin
     class PaymentMethodsController < ResourceController
