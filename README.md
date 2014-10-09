@@ -23,3 +23,10 @@ META-PROGRAMMING TALK
   * not dogging on Rails or Ruby, but because it's so versatile/powerful, need to be careful
   * Open for Questions
   * Thanks and Close
+
+*Open Source Gems with Meta-programming Issues
+   *Diaspora (constantize)
+   *Discourse (send)
+   *Fat Free CRM (constantize)
+   *Redmine (const_get)
+   *Spree (send, constantize)
