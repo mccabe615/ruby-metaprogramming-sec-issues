@@ -4,12 +4,13 @@ class DemosController < ApplicationController
 
 	def demosend
 		@employees = Employee.all
-		@employee = Employee.new
+		@employee = Employee.find(1)
+
 
 	end
 
 	def demosendcreate
-		@employee = Employee.find(params[:id])
+		@employee = Employee.find(1)
 		type = params[:type]
 		@employee.send("#{type}=", params[:value])
 		@employee.save!

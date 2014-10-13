@@ -1,7 +1,6 @@
-send.html.erb
+<h3>Edit Profile: Bad Send()</h3>
+<div>
 <%= form_tag(controller: "demos", action: "demosendcreate", method: "post") do %>
-	<%= label_tag(:id, "Enter the ID of the Employee you want to edit") %><br>
-	<%= text_field_tag(:id) %><br>
 	Choose what you would like to Edit:<br>
 	<%= radio_button_tag(:type, "name") %>
 	<%= label_tag(:type_name, "Name") %><br>
@@ -11,3 +10,21 @@ send.html.erb
 	<%= text_field_tag(:value) %><br>
 	<%= submit_tag("Submit", :class => "btn btn-success") %>
 <% end %>
+</div>
+<div>
+<h4>Our User</h4>
+<table class="table table-striped">
+<tr>
+	<th>Name</th>
+	<th>Status</th>
+	<th>Position</th>
+	<th>Salary</th>
+</tr>
+
+<tr>
+	<td><%= @employee.name %></td>
+	<td><%= @employee.status %></td>
+	<td><%= @employee.position %></td>
+	<td><%= @employee.salary %></td>
+</tr>
+</table>
