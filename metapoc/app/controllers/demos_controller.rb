@@ -9,12 +9,10 @@ class DemosController < ApplicationController
 	end
 
 	def demosendcreate
-		@employee = Employee.new
-		@employee.name = params[:employee][:name]
-		@employee.status = params[:employee][:status]
-		@employee.position = params[:employee][:position]
-		@employee.save
-
+		@employee = Employee.find(params[:id])
+		type = params[:type]
+		@employee.send("#{type}=", params[:value])
+		@employee.save!
 		redirect_to demos_demosend_path
 	end
 

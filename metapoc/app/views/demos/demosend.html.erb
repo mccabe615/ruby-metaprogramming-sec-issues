@@ -1,7 +1,13 @@
 send.html.erb
-<%= form_for @employee, url: {action: "demosendcreate"}, html: {class: "nifty_form"} do |f| %>
-  <%= f.text_field :name %>
-  <%= f.text_field :position %>
-  <%= f.text_field :status %>
-  <%= f.submit "Create", :class => "btn btn-sm btn-success" %>
+<%= form_tag(controller: "demos", action: "demosendcreate", method: "post") do %>
+	<%= label_tag(:id, "Enter the ID of the Employee you want to edit") %><br>
+	<%= text_field_tag(:id) %><br>
+	Choose what you would like to Edit:<br>
+	<%= radio_button_tag(:type, "name") %>
+	<%= label_tag(:type_name, "Name") %><br>
+	<%= radio_button_tag(:type, "status") %>
+	<%= label_tag(:type_status, "Status") %><br>
+	<%= label_tag(:value, "Enter Value") %>
+	<%= text_field_tag(:value) %><br>
+	<%= submit_tag("Submit", :class => "btn btn-success") %>
 <% end %>
