@@ -14,6 +14,7 @@ class DemosController < ApplicationController
 		type = params[:type]
 		@employee.send("#{type}=", params[:value])
 		@employee.save!
+		
 		redirect_to demos_demosend_path
 	end
 
