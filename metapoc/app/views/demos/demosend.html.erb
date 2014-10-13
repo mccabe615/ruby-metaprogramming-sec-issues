@@ -1,0 +1,7 @@
+send.html.erb
+<%= form_for @employee, url: {action: "demosendcreate"}, html: {class: "nifty_form"} do |f| %>
+  <%= f.text_field :name %>
+  <%= f.text_field :position %>
+  <%= f.text_field :status %>
+  <%= f.submit "Create", :class => "btn btn-sm btn-success" %>
+<% end %>
