@@ -22,4 +22,10 @@ class DemosController < ApplicationController
 
 	def demoeval
 	end
+
+	def contact
+	end
+
+	def about
+	end
 end
