@@ -5,3 +5,45 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+emps = [
+     {
+       :name => "Ken",
+       :status => "Available",
+       :position => "Peon",
+       :salary => 5000
+      },
+     {
+       :name => "Bob",
+       :status => "Available",
+       :position => "Peon",
+       :salary => 5000
+     },
+     {
+       :name => "Jonn",
+       :status => "Available",
+       :position => "Grunt",
+       :salary => 10000
+     },
+     {
+       :name => "Andrew",
+       :status => "Available",
+       :position => "Captain Kangaroo",
+       :salary => 40000
+      },
+     {
+       :name => "Mike",
+       :status => "Available",
+       :position => "Chief",
+       :salary => 50000
+      }
+]
+
+emps.each do |user_info|
+	emp = Employee.new
+	emp.name = user_info[:name]
+	emp.status = user_info[:status]
+	emp.position = user_info[:position]
+	emp.salary = user_info[:salary]
+	emp.save
+end
