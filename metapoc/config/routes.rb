@@ -5,10 +5,14 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
     root 'demos#index'
+    resources :users
     get 'demos/contact' => 'demos#contact'
     get 'demos/about' => 'demos#about'
     get 'demos/demosend' => 'demos#demosend'
+    get 'demos/democonstantize' => 'demos#democonstantize'
+    post 'demos/democonstantizevalidate' => 'demos#democonstantizevalidate'
     post 'demos/demosendcreate' => 'demos#demosendcreate'
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

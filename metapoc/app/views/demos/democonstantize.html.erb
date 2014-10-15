@@ -1,19 +1,8 @@
 Constantize Form:
 <%= form_tag(controller: "demos", action: "democonstantizevalidate", method: "post") do %>
-	Choose what you would like to Edit:<br>
-	<%= radio_button_tag(:type, "name") %>
-	<%= label_tag(:type_name, "Name") %><br>
-	<%= radio_button_tag(:type, "status") %>
-	<%= label_tag(:type_status, "Status") %><br>
-	<%= label_tag(:value, "Enter Value") %>
-	<%= text_field_tag(:value) %><br>
+	Choose Model:<br>
+	<%= hidden_field_tag(:class, "Employee") %>
+	<%= label_tag(:id, "Enter Employee ID to Validate:") %><br>
+	<%= text_field_tag(:id) %><br>
 	<%= submit_tag("Submit", :class => "btn btn-success") %>
 <% end %>
-
-<!-- 
-	    model_class = params['model'].classify.constantize
-	    @model_instance = params['id'] ? model_class.find(params['id']) : model_class.new
-	    @model_instance.send("#{params['attribute']}=", params['value'])
-	    @model_instance.valid?
-	    render :inline => "<%= error_message_on(@model_instance, params['attribute']) %>"
--->

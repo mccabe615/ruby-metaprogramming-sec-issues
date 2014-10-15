@@ -189,7 +189,7 @@ class Admin::UsersController < Admin::ApplicationController
   def validate
     model_class = params['model'].classify.constantize
     @model_instance = params['id'] ? model_class.find(params['id']) : model_class.new
-    @model_instance.send("#{params['attribute']}=", params['value'])
+    @model_instance.send("#{params['attribute']}=", params['value']) 
     @model_instance.valid?
     render :inline => "<%= error_message_on(@model_instance, params['attribute']) %>"
   end

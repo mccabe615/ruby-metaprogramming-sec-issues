@@ -22,14 +22,10 @@ class DemosController < ApplicationController
 	end
 
 	def democonstantizevalidate
-	# Overwritting the AjaxValidation plugin to manage the permission
-	### FROM https://github.com/thinkdry/blank-application/blob/master/app/controllers/admin/users_controller.rb#L187
-	# /users/validate
-	    model_class = params['model'].classify.constantize
-	    @model_instance = params['id'] ? model_class.find(params['id']) : model_class.new
-	    @model_instance.send("#{params['attribute']}=", params['value'])
-	    @model_instance.valid?
-	    render :inline => "<%= error_message_on(@model_instance, params['attribute']) %>"
+	    klass = params[:class].constantize
+	    @obj = klass.find_by_id!(params[:id])
+	    @valid = @obj.valid?
+	    @errors = @obj.errors
 	end
 
 	def demoeval
