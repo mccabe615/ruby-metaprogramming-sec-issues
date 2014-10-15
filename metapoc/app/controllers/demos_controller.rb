@@ -21,18 +21,15 @@ class DemosController < ApplicationController
 	def democonstantize
 	end
 
-	def democonstantizecreate
-		@payment_method = params[:payment_method].delete(:type).constantize.new(payment_method_params)
-        @object = @payment_method
-        invoke_callbacks(:create, :before)
-        if @payment_method.save
-          invoke_callbacks(:create, :after)
-          flash[:success] = Spree.t(:successfully_created, :resource => Spree.t(:payment_method))
-          redirect_to edit_admin_payment_method_path(@payment_method)
-        else
-          invoke_callbacks(:create, :fails)
-          respond_with(@payment_method)
-        end
+	def democonstantizevalidate
+	# Overwritting the AjaxValidation plugin to manage the permission
+	### FROM https://github.com/thinkdry/blank-application/blob/master/app/controllers/admin/users_controller.rb#L187
+	# /users/validate
+	    model_class = params['model'].classify.constantize
+	    @model_instance = params['id'] ? model_class.find(params['id']) : model_class.new
+	    @model_instance.send("#{params['attribute']}=", params['value'])
+	    @model_instance.valid?
+	    render :inline => "<%= error_message_on(@model_instance, params['attribute']) %>"
 	end
 
 	def demoeval
