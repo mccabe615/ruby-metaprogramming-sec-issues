@@ -39,6 +39,21 @@ emps = [
       }
 ]
 
+users = [
+     {
+       :name => "Ken",
+       :ssn => "123-456-1234",
+       :email => "ken@demos.com",
+       :standing => "Excellent"
+      },
+     {
+       :name => "Mike",
+       :ssn => "432-158-1111",
+       :email => "mike@demos.com",
+       :standing => "Good"
+     }
+]
+
 emps.each do |user_info|
 	emp = Employee.new
 	emp.name = user_info[:name]
@@ -46,4 +61,13 @@ emps.each do |user_info|
 	emp.position = user_info[:position]
 	emp.salary = user_info[:salary]
 	emp.save
+end
+
+users.each do |user_info|
+  user = User.new
+  user.name = user_info[:name]
+  user.ssn = user_info[:ssn]
+  user.email = user_info[:email]
+  user.standing = user_info[:standing]
+  user.save
 end
