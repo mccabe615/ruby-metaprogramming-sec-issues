@@ -1,15 +1,15 @@
-<% @employees.each do |emp| %>
 
+<h3>Employee Profiles</h3>
 <table class="table table-striped">
 <tr>
 	<th>Name</th>
-	<th>Email</th>
+	<th>Status</th>
 </tr>
 
+<% @employees.each do |emp| %>
 <tr>
 <td><%= link_to emp.name, "Employee/#{emp.id}" %></td>
-<td></td>
+<td><%= emp.status %></td>
 </tr>
-</table>
-
 <% end %>
+</table>
