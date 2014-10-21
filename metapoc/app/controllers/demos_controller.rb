@@ -5,16 +5,22 @@ class DemosController < ApplicationController
 	def demosend
 		@employees = Employee.all
 		@employee = Employee.find(1)
-
-
 	end
+
+
+	def private_inst_demo
+		if DemosController.private_instance_methods.include? meth.to_sym
+			self.send(params[:meth].to_sym)
+		end
+	end
+
 
 	def demosendcreate
 		@employee = Employee.find(1)
 		type = params[:type]
 		@employee.send("#{type}=", params[:value])
 		@employee.save!
-		
+
 		redirect_to demos_demosend_path
 	end
 
@@ -22,10 +28,10 @@ class DemosController < ApplicationController
 	end
 
 	def democonstantizevalidate
-	    klass = params[:class].constantize
-	    @obj = klass.find_by_id!(params[:id])
-	    @valid = @obj.valid?
-	    @errors = @obj.errors
+		klass = params[:class].constantize
+		@obj = klass.find_by_id!(params[:id])
+		@valid = @obj.valid?
+		@errors = @obj.errors
 	end
 
 	def demoeval
