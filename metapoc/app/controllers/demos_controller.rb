@@ -43,6 +43,10 @@ class DemosController < ApplicationController
 		@employees = Employee.all
 	end
 
+	def demomethmissing
+		# https://github.com/Scatchell/FoodForThought/blob/master/app/controllers/registrations_controller.rb
+	end
+
 	def contact
 	end
 
