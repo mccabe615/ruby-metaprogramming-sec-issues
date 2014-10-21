@@ -1,5 +1,6 @@
 <h3>Edit Profile: Bad Send()</h3>
-<div>
+<div class="row">
+<div class="col-md-6">
 <%= form_tag(controller: "demos", action: "demosendcreate", method: "post") do %>
 	Choose what you would like to Edit:<br>
 	<%= radio_button_tag(:type, "name") %>
@@ -7,11 +8,12 @@
 	<%= radio_button_tag(:type, "status") %>
 	<%= label_tag(:type_status, "Status") %><br>
 	<%= label_tag(:value, "Enter Value") %>
-	<%= text_field_tag(:value) %><br>
+	<%= text_field_tag(:value, nil, class: "form-control") %><br>
 	<%= submit_tag("Submit", :class => "btn btn-success") %>
 <% end %>
 </div>
-<div>
+</div>
+<div class="row">
 <h4>Our User</h4>
 <table class="table table-striped">
 <tr>

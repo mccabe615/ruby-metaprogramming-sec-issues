@@ -1,8 +1,13 @@
+<div class="row">
+<div class="col-md-4">
 Constantize Form:
-<%= form_tag(controller: "demos", action: "democonstantizevalidate", method: "post") do %>
-	Choose Model:<br>
+<%= form_tag({controller: "demos", action: "democonstantizevalidate"}, method: "post", role: "form") do %>
+<div class="form-group">
 	<%= hidden_field_tag(:class, "Employee") %>
 	<%= label_tag(:id, "Enter Employee ID to Validate:") %><br>
-	<%= text_field_tag(:id) %><br>
+	<%= text_field_tag(:id , nil, class: "form-control") %><br>
 	<%= submit_tag("Submit", :class => "btn btn-success") %>
+</div>
 <% end %>
+</div>
+</div>
