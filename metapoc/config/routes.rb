@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     get 'demos/democonstantize' => 'demos#democonstantize'
     post 'demos/democonstantizevalidate' => 'demos#democonstantizevalidate'
     post 'demos/demosendcreate' => 'demos#demosendcreate'
+    get 'demos/demoeval/:model_name/:model_id', to: 'demos#demoeval'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
