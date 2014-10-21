@@ -33,6 +33,10 @@ class DemosController < ApplicationController
 		@object = eval(params[:model_name]).find params[:model_id]
 	end
 
+	def demoevalemplist
+		@employees = Employee.all
+	end
+
 	def contact
 	end
 

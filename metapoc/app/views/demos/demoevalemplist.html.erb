@@ -1,0 +1,15 @@
+<% @employees.each do |emp| %>
+
+<table class="table table-striped">
+<tr>
+	<th>Name</th>
+	<th>Email</th>
+</tr>
+
+<tr>
+<td><%= link_to emp.name, "Employee/#{emp.id}" %></td>
+<td></td>
+</tr>
+</table>
+
+<% end %>
