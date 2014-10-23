@@ -65,6 +65,7 @@ emps.each do |user_info|
 	emp.status = user_info[:status]
 	emp.position = user_info[:position]
 	emp.salary = user_info[:salary]
+  emp.email = user_info[:email]
 	emp.save
 end
 
