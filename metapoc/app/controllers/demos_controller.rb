@@ -28,7 +28,14 @@ class DemosController < ApplicationController
 	end
 
 	def democonstantizevalidate
-		klass = params[:class].constantize
+		@valid_classes = ["Employee"]
+		validation = params[:class]
+		if @valid_classes.include?(validation)
+			validation
+		else
+			validation = "Employee"
+		end
+		klass = validation.constantize
 		@obj = klass.find_by_id!(params[:id])
 		@valid = @obj.valid?
 		@errors = @obj.errors
