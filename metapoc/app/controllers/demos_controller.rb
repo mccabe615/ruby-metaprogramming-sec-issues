@@ -1,4 +1,5 @@
 class DemosController < ApplicationController
+	acceptable_params = ["name","status"]
 	def index
 	end
 
@@ -18,7 +19,7 @@ class DemosController < ApplicationController
 	def demosendcreate
 		@employee = Employee.find(1)
 		type = params[:type]
-		if type == ("name" || "status")
+		if acceptable_params.include(type)
 			@employee.send("#{type}=", params[:value])
 			@employee.save!
 		else			
