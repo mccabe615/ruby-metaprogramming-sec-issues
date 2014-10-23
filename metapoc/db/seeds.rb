@@ -11,31 +11,36 @@ emps = [
        :name => "Ken",
        :status => "Available",
        :position => "Peon",
-       :salary => 5000
+       :salary => 5000,
+       :email => "ken@employee.com"
       },
      {
        :name => "Bob",
        :status => "Available",
        :position => "Peon",
-       :salary => 5000
+       :salary => 5000,
+       :email => "bob@employee.com"
      },
      {
        :name => "Jonn",
        :status => "Available",
        :position => "Grunt",
-       :salary => 10000
+       :salary => 10000,
+       :email => "jonn@employee.com"
      },
      {
        :name => "Andrew",
        :status => "Available",
        :position => "Captain Kangaroo",
-       :salary => 40000
+       :salary => 40000,
+       :email => "andy@employee.com"
       },
      {
        :name => "Mike",
        :status => "Available",
        :position => "Chief",
-       :salary => 50000
+       :salary => 50000,
+       :email => "mike@employee.com"
       }
 ]
 
@@ -60,6 +65,7 @@ emps.each do |user_info|
 	emp.status = user_info[:status]
 	emp.position = user_info[:position]
 	emp.salary = user_info[:salary]
+  emp.email = user_info[:email]
 	emp.save
 end
 
