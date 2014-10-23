@@ -18,14 +18,12 @@ class DemosController < ApplicationController
 	def demosendcreate
 		@employee = Employee.find(1)
 		type = params[:type]
-		if params[:type] == "Employee" || "Article"
-		@employee.send("#{type}=", params[:value])
-		else
-			redirect_to 404
+		if type == ("name" || "status")
+			@employee.send("#{type}=", params[:value])
+			@employee.save!
+		else			
 		end
-		@employee.save!
-
-		redirect_to demos_demosend_path
+	redirect_to demos_demosend_path	
 	end
 
 	def democonstantize
