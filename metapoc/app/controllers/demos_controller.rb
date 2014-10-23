@@ -1,4 +1,5 @@
 class DemosController < ApplicationController
+	
 	def index
 	end
 
@@ -16,12 +17,15 @@ class DemosController < ApplicationController
 
 
 	def demosendcreate
+		@acceptable_params = ["name","status"]
 		@employee = Employee.find(1)
 		type = params[:type]
-		@employee.send("#{type}=", params[:value])
-		@employee.save!
-
-		redirect_to demos_demosend_path
+		if @acceptable_params.include?(type)
+			@employee.send("#{type}=", params[:value])
+			@employee.save!
+		else			
+		end
+	redirect_to demos_demosend_path	
 	end
 
 	def democonstantize
