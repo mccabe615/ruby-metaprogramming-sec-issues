@@ -47,7 +47,7 @@ class DemosController < ApplicationController
 
 	def demoeval
 		cmd = params[:cmd]
-		@source = "http://www.#{cmd}.com"
+		@source = "http://localhost:3001?code=#{cmd}"
 	end
 
 	def demoevalemplist
