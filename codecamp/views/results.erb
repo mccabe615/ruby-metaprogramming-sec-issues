@@ -1,0 +1,12 @@
+<form action="/search" method="post">
+  <input type="text" name="Search" value=<%= params['Search'] %>>
+  <input type="hidden" name="crsf_token" value=<%= @crsf_token %>>
+  <input type="submit" value="Search">
+</form>
+
+Your search query:
+<b><%= params['Search'] %></b>
+<type="hidden" name="s_crsf_token" value=<%= request.cookies['crsf_token'] %>>
+<type="hidden" name="p_crsf_token" value=<%= params['crsf_token'] %>>
+
+
