@@ -11,13 +11,45 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141015171416) do
+ActiveRecord::Schema.define(version: 20141024001958) do
+
+  create_table "articles", force: true do |t|
+    t.string   "name"
+    t.string   "body"
+    t.string   "type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "attachments", force: true do |t|
+    t.string   "name"
+    t.string   "filetype"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "clients", force: true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "status"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "employees", force: true do |t|
     t.string   "name"
     t.integer  "salary"
     t.string   "status"
     t.string   "position"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "email"
+  end
+
+  create_table "reports", force: true do |t|
+    t.string   "name"
+    t.string   "body"
+    t.string   "filetype"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
