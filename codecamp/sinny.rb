@@ -7,7 +7,10 @@ class Sinny < Sinatra::Base
     @result=eval(params[:code])
     "Results from Ruby command: "
     erb :results
-    
-  end
 
+ 
+  end
+  after do
+    headers({ 'X-Frame-Options' => 'ALLOW' })
+  end
 end
