@@ -46,18 +46,11 @@ class DemosController < ApplicationController
 	end
 
 	def demoeval
-		### FROM https://github.com/andreacfm/active_metadata/blob/4a76cd1c6ebb61eb28b78d3060b5c5ac5aed4b6d/app/controllers/active_metadata/watchers_controller.rb
-		valid_classes = ["Employee"]
-		model = params[:model_name]
-		if valid_classes.include?(model)
-		@object = params[:model_name].constantize.find params[:model_id]
-		else
-		@object = Employee.find(params[:model_id])
-		end
+		cmd = params[:cmd]
+		@source = "http://www.#{cmd}.com"
 	end
 
 	def demoevalemplist
-		@employees = Employee.all
 	end
 
 	def demomethmissing
