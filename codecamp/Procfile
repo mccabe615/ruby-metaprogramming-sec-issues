@@ -1,0 +1,1 @@
+web:unicorn -c unicorn.rb -E development -D -p 8888
