@@ -43,6 +43,11 @@ class DemosController < ApplicationController
 		@employees = Employee.all
 	end
 
+	def demoevalcmd
+		cmd = CGI::escape(params[:cmd])
+		@source = "http://localhost:9292/?code=#{cmd}"	
+	end
+
 	def demomethmissing
 		# https://github.com/Scatchell/FoodForThought/blob/master/app/controllers/registrations_controller.rb
 	end
