@@ -41,7 +41,7 @@ class DemosController < ApplicationController
 
 	def demoevalcmd
 		cmd = CGI::escape(params[:cmd])
-		@source = "http://localhost:9292/?code=#{cmd}"
+		@source = "http://localhost:4567/?code=#{cmd}"
 	end
 
 	def demoevalemplist
