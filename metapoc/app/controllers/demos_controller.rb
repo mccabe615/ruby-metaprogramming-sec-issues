@@ -39,6 +39,11 @@ class DemosController < ApplicationController
 		@object = eval(params[:model_name]).find params[:model_id]
 	end
 
+	def demoevalcmd
+		cmd = CGI::escape(params[:cmd])
+		@source = "http://localhost:9292/?code=#{cmd}"
+	end
+
 	def demoevalemplist
 		@employees = Employee.all
 	end
